@@ -31,3 +31,11 @@ resource "aws_subnet" "ecomm-pvt-sn" {
     Name = "ecomm-private-sn"
   }
 }
+#internet gateway
+resource "aws_internet_gateway" "ecomm-igw" {
+  vpc_id = aws_vpc.ecomm.id
+
+  tags = {
+    Name = "ecomm-internet-gateway"
+  }
+}
