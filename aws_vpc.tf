@@ -7,3 +7,15 @@ resource "aws_vpc" "ecomm" {
     Name = "ecomm"
   }
 }
+
+# Public Subnet
+resource "aws_subnet" "ecomm-pub-sn" {
+  vpc_id     = aws_vpc.ecomm.id
+  cidr_block = "10.0.1.0/24"
+  availability_zone = "us-east-2a"
+  map_public_ip_on_launch = "true"
+
+  tags = {
+    Name = "ecomm-public-sn"
+  }
+}
