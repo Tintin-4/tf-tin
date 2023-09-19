@@ -39,3 +39,19 @@ resource "aws_internet_gateway" "ecomm-igw" {
     Name = "ecomm-internet-gateway"
   }
 }
+
+# public route table
+resource "aws_route_table" "ecomm-pub-rt" {
+  vpc_id = aws_vpc.ecomm.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.ecomm-igw.id
+  }
+
+  tags = {
+    Name = "ecomm-public-route-table"
+  }
+}
+
+
