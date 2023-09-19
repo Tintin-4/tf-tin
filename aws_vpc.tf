@@ -68,3 +68,9 @@ resource "aws_route_table" "ecomm-pvt-rt" {
     Name = "ecomm-private-route-table"
   }
 }
+
+# private route table association
+resource "aws_route_table_association" "ecomm-pvt-ass" {
+  subnet_id      = aws_subnet.ecomm-pvt-sn.id
+  route_table_id = aws_route_table.ecomm-pvt-rt.id
+}
