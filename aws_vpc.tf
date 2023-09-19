@@ -60,3 +60,11 @@ resource "aws_route_table_association" "ecomm-pub-ass" {
   route_table_id = aws_route_table.ecomm-pub-rt.id
 }
 
+# private route table
+resource "aws_route_table" "ecomm-pvt-rt" {
+  vpc_id = aws_vpc.ecomm.id
+
+  tags = {
+    Name = "ecomm-private-route-table"
+  }
+}
